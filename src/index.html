@@ -8,13 +8,10 @@
 </head>
 <body>
     
-    <div id="checkboxBox" class="col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4">
-        <template v-for="(item,index) in items">
-            <input type="checkbox" :id="index" :value="item.name" v-model="checked">
-            <label :for="index" v-if="checked.indexOf(item.name) > -1">{{item.name}}</label>
-            <label :for="index" v-else>猜猜我是谁</label>
-            <br>
-        </template>
+    <div id="searchTextBox" class="col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4">
+        <custom-input v-model="searchText"></custom-input>
+        <br>
+        {{searchText}}
     </div>
    
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>

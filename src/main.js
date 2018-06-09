@@ -1,13 +1,16 @@
-
+Vue.component('custom-input',{
+    props:['value'],
+    template:`
+    <input
+      v-bind:value="value"
+      v-on:input="$emit('input', $event.target.value)"
+    >
+  `
+})
 
 var vmcheck = new Vue({
-    el:'#checkboxBox',
+    el:'#searchTextBox',
     data:{
-        checked:[],
-        items:[
-        {name:'sher'},
-        {name:'jb杰城'},
-        {name:'homer'}
-        ]
+        searchText:''
     }
 })
