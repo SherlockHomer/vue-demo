@@ -1,0 +1,9 @@
+node_modules/
+build/
+*.sublime-project
+*.sublime-workspace
+ISSUES.md
+/*.zip
+*custom.*
+*test.*
+.idea
