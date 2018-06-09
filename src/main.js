@@ -1,13 +1,22 @@
-
+Vue.component('sher-comp',{
+    template:'<div>I am sher-comp</div>'
+});
+Vue.component('lock-comp',{
+    template:'<div>I am lock-comp</div>'
+});
+Vue.component('homer-comp',{
+    template:'<div>I am homer-comp</div>'
+})
 
 var vmcheck = new Vue({
-    el:'#checkboxBox',
+    el:'#tabs',
     data:{
-        checked:[],
-        items:[
-        {name:'sher'},
-        {name:'jb杰城'},
-        {name:'homer'}
-        ]
+        tabs: ['sher', 'lock', 'homer'],
+        currentTab:'lock'
+    },
+    computed:{
+        currentTabComp:function(){
+            return this.currentTab+'-comp';
+        }
     }
 })
