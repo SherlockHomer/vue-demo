@@ -2,10 +2,16 @@ var navigation = {
     props:['url'],
     template:`
     <div>
-        <a :href="'www.baidu.com/'+url.name">www.baidu.com/<slot name="slotman"></slot></a>
+        <a :href="'www.baidu.com/'+url.name">www.baidu.com/</a>
+        <slot name="slotman" :text="text"></slot>
         <slot>submit</slot>
     </div>
-    `
+    `,
+    data:function(){
+        return {
+            text:'I am from component data'
+        }
+    }
 }
 
 var vmcheck = new Vue({

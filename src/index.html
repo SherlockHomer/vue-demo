@@ -10,7 +10,14 @@
     
     <div id="slotBox" class="col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4">
         <navigation v-for="url in urls" :url="url">
-            <template slot="slotman">{{url.name}}</template>
+            <template slot="slotman" slot-scope="compData">
+            {{url.name}}
+            <span>{{compData.text}}</span>
+            <!-- or -->
+            <!-- <template slot="slotman" slot-scope="{text}">
+            {{url.name}}
+            <span>{{text}}</span> -->
+        </template>
         </navigation>
     </div>
    
