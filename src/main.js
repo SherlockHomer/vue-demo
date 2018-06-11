@@ -1,13 +1,23 @@
-
+var navigation = {
+    props:['url'],
+    template:`
+    <div>
+        <a :href="'www.baidu.com/'+url.name">www.baidu.com/<slot name="slotman"></slot></a>
+        <slot>submit</slot>
+    </div>
+    `
+}
 
 var vmcheck = new Vue({
-    el:'#checkboxBox',
+    el:'#slotBox',
     data:{
-        checked:[],
-        items:[
+        urls:[
         {name:'sher'},
-        {name:'jb杰城'},
+        {name:'lock'},
         {name:'homer'}
         ]
+    },
+    components:{
+        navigation
     }
 })
