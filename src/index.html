@@ -5,16 +5,31 @@
     <meta name="viewport" content="width=device-width">
     <title>Vue demo</title>
     <link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /*需要配置的样式*/
+        .slide-fade-enter-active {
+          transition: all .5s ease;
+        }
+        .slide-fade-leave-active {
+          transition: all .5s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+        }
+         .slide-fade-leave-to
+        /* .slide-fade-leave-active for below version 2.1.8 */ {
+          transform: translateX(100px);
+          opacity: 0;
+        }
+        .slide-fade-enter{
+            transform: translateX(100px);
+        }
+    </style>
 </head>
 <body>
     
-    <div id="checkboxBox" class="col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4">
-        <template v-for="(item,index) in items">
-            <input type="checkbox" :id="index" :value="item.name" v-model="checked">
-            <label :for="index" v-if="checked.indexOf(item.name) > -1">{{item.name}}</label>
-            <label :for="index" v-else>猜猜我是谁</label>
-            <br>
-        </template>
+    <div id="transBox" class="col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4">
+        <button @click="show = !show">toggle</button>
+        <transition name="slide-fade">
+            <p v-if="show">hello sher</p>
+        </transition>
     </div>
    
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
