@@ -8,16 +8,15 @@
 </head>
 <body>
     
-    <div id="checkboxBox" class="col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4">
-        <template v-for="(item,index) in items">
-            <input type="checkbox" :id="index" :value="item.name" v-model="checked">
-            <label :for="index" v-if="checked.indexOf(item.name) > -1">{{item.name}}</label>
-            <label :for="index" v-else>猜猜我是谁</label>
-            <br>
-        </template>
+    <div id="listTran" class="col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4">
+        <input v-model="query">
+        <tran-list>
+            <li v-for="(item ,index) in computedList" :key="item.msg" :data-index="index">{{item.msg}}</li>
+        </tran-list>
     </div>
    
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js"></script>
     <!-- <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script> -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script> -->
     <script src="main.js"></script>

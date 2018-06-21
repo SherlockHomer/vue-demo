@@ -1,13 +1,55 @@
-
+Vue.component('tran-list',{
+    template:`
+    <transition-group name="staggered-fade" tag="ul" :css="false" @before-enter="beforeEnter" @enter="enter" @leave="leave">
+        <slot></slot>
+    </transition-group>
+    `,
+    methods:{
+        beforeEnter:function(el){
+            el.style.opacity = 0;
+            el.style.height = 0;
+        },
+        enter:function(el,done){
+            var delay = el.dataset.index * 150
+            setTimeout(function () {
+                Velocity(
+                  el,
+                  { opacity: 1, height: '1.6em' },
+                  { complete: done }
+                  )
+            }, delay)
+        },
+        leave:function(el,done){
+            var delay = el.dataset.index * 150
+            setTimeout(function () {
+                Velocity(
+                  el,
+                  { opacity: 0, height: 0 },
+                  { complete: done }
+                  )
+            }, delay)
+        }
+    }
+})
 
 var vmcheck = new Vue({
-    el:'#checkboxBox',
+    el:'#listTran',
     data:{
-        checked:[],
-        items:[
-        {name:'sher'},
-        {name:'jb杰城'},
-        {name:'homer'}
+        query:'',
+        list:[
+        { msg: 'Bruce Lee' },
+        { msg: 'Jackie Chan' },
+        { msg: 'Chuck Norris' },
+        { msg: 'Jet Li' },
+        { msg: 'Kung Fury' }
         ]
-    }
+    },
+    computed:{
+        computedList:function(){
+            var vm = this
+            return this.list.filter(function (item) {
+                return item.msg.toLowerCase().indexOf(vm.query.toLowerCase()) !== -1
+            })
+        }
+    }  
 })
