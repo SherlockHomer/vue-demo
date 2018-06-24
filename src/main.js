@@ -1,13 +1,12 @@
+import Vue from 'vue'
+import Checkbox from './component/Checkbox.vue'
 
 
-var vmcheck = new Vue({
+var div = document.createElement('div');
+div.id = 'checkboxBox';
+document.body.append(div);
+
+new Vue({
     el:'#checkboxBox',
-    data:{
-        checked:[],
-        items:[
-        {name:'sher'},
-        {name:'jb杰城'},
-        {name:'homer'}
-        ]
-    }
+    render: h => h(Checkbox)
 })
