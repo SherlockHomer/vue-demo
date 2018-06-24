@@ -17,7 +17,8 @@ module.exports = {
     },
     devtool:'inline-source-map',
     devServer: {
-        // publicPath:'/dist',
+        // 我喜欢dev 模式下也放在dist中
+        publicPath:'/dist/',
         // hot: true
         // historyApiFallback: true
     },
@@ -47,10 +48,13 @@ module.exports = {
         },
         {
             test: /\.vue$/,
-            loader: 'vue-loader',
-            options: {
-        hotReload: true // disables Hot Reload
-      }
+            loader: 'vue-loader'
+        },
+        {
+            enforce: 'pre',
+            test: /\.(js|vue)$/,
+            loader: 'eslint-loader',
+            exclude: /node_modules/
         }
         ]
         

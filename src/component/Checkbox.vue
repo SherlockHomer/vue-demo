@@ -3,7 +3,7 @@
         <div v-for="(item,index) in items">
             <input type="checkbox" :id="index" :value="item.name" v-model="checked">
             <label :for="index" v-if="checked.indexOf(item.name) > -1">{{item.name}}</label>
-            <label :for="index" v-else>猜猜我是谁</label>
+            <label :class="$style.red" :for="index" v-else>猜猜我是谁</label>
             <br>
         </div>
     </div>
@@ -24,3 +24,16 @@
         }
     }
 </script>
+
+
+<style scoped>
+    input{
+        width:120px;
+    }
+</style>
+
+<style module>
+    .red{
+        color:red;
+    }
+</style>
