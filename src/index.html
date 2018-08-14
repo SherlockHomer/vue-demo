@@ -1,22 +1,33 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>Vue demo</title>
     <link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
 </head>
+
 <body>
-    
+
     <div id="searchTextBox" class="col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4">
-        <custom-input v-model="searchText"></custom-input>
+        <!-- vue 官网的 等同于 searchText = $event 并没有卵用，实际是arguments -->
+        <custom-input v-bind:value="searchText" v-on:input="final = arguments[0]+ ' ' + arguments[1]"></custom-input>
+        <!-- <custom-input v-model="searchText"></custom-input> -->
+
         <br>
-        {{searchText}}
+        <div>
+            searchText:{{searchText}}
+        </div>
+        <div>
+            final:{{final}}
+        </div>
     </div>
-   
+
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <!-- <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script> -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script> -->
     <script src="main.js"></script>
 </body>
+
 </html>

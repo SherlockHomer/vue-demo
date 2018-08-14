@@ -3,7 +3,7 @@ Vue.component('custom-input',{
     template:`
     <input
       v-bind:value="value"
-      v-on:input="$emit('input', $event.target.value)"
+      v-on:input="$emit('input', $event.target.value,'sherlock')"
     >
   `
 })
@@ -11,6 +11,7 @@ Vue.component('custom-input',{
 var vmcheck = new Vue({
     el:'#searchTextBox',
     data:{
-        searchText:''
+        searchText:'',
+        final:''
     }
 })
